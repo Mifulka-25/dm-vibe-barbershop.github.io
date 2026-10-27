@@ -9,8 +9,8 @@
 <style>
     :root {
         --primary: #000000;
-        /* FIXED: Native repeating gradient formula scaled structurally to loop exactly 7 times horizontally */
-        --secondary: repeating-linear-gradient(to right, #BC02D9 0%, #00E4FF calc(100% / 7));
+        /* FIXED: Hard color stops create crisp, alternating neon barber stripes with zero blurry bleeding */
+        --secondary: repeating-linear-gradient(to right, #BC02D9 0px, #BC02D9 20px, #00E4FF 20px, #00E4FF 40px);
         --text-light: #ffffff;
         --text-dark: #000000;
         --bg-light: #0e011a;
@@ -38,7 +38,7 @@
         top: 0;
         z-index: 1000;
         background-image: var(--secondary);
-        background-size: 100% 3px; /* Slightly thicker for a brighter display look */
+        background-size: 100% 3px; /* Slightly thicker for a bright neon look */
         background-position: bottom;
         background-repeat: no-repeat;
     }
@@ -78,15 +78,14 @@
         align-items: center;
     }
 
-    /* Vertical 7-time loop dividers inside the header navigation */
+    /* Vertical stripes acting as link dividers in the menu */
     nav ul li:not(:last-child)::after {
         content: "";
         display: inline-block;
-        width: 2px;
+        width: 3px;
         height: 14px;
         margin: 0 15px;
         background: var(--secondary);
-        opacity: 0.9; /* Made brighter */
     }
 
     nav ul li a {
@@ -149,7 +148,7 @@
         font-weight: bold;
         border-radius: 4px;
         transition: background 0.3s, transform 0.3s, border-color 0.3s;
-        border: 2px solid #00E4FF; /* Brighter neon initial line boundary */
+        border: 2px solid #00E4FF;
         background: var(--secondary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -170,7 +169,7 @@
         margin: 0 auto;
     }
 
-    /* Edge-to-edge structural sections with the newly condensed 7-times repeating pattern */
+    /* Full-screen horizontal section borders with alternating barber stripes */
     #services, section:first-of-type {
         max-width: 100%;
         background-image: var(--secondary);
@@ -228,9 +227,9 @@
         background: white;
         padding: 30px;
         border-radius: 8px;
-        box-shadow: 0 4px 15px rgba(0, 228, 255, 0.2); /* Enhanced bright cyan shadow glow */
+        box-shadow: 0 4px 15px rgba(0, 228, 255, 0.15); /* Sleek neon background glow */
         text-align: center;
-        /* FIXED & BRIGHTENED: Thickened border frame displaying the short 7x repeat sequence */
+        /* Solid frame enclosing the alternating striped theme sequence */
         border: 4px solid transparent;
         border-image: var(--secondary) 1;
     }
