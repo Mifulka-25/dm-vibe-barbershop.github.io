@@ -36,7 +36,7 @@
         width: 100%;
         top: 0;
         z-index: 1000;
-        /* Ultra-compatible background strip trick for gradient bottom borders */
+        /* FIXED: Native-compatible background-image clipping method for bottom borders */
         background-image: var(--secondary);
         background-size: 100% 2px;
         background-position: bottom;
@@ -61,6 +61,7 @@
     }
 
     .logo span {
+        /* FIXED: Correct parameters for displaying gradients inside standalone text structures */
         background: var(--secondary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -78,7 +79,7 @@
         align-items: center;
     }
 
-    /* Adds vertical gradient dividers between navigation items */
+    /* FIXED: Custom navigation section dividers with clean layout endings */
     nav ul li:not(:last-child)::after {
         content: "";
         display: inline-block;
@@ -144,7 +145,7 @@
         transition: background 0.3s, transform 0.3s, border-color 0.3s;
         border: 2px solid #BC02D9;
         
-        /* Gradient styling for button text */
+        /* FIXED: Renders the gradient on the text inside the booking link button */
         background: var(--secondary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -184,21 +185,19 @@
         position: relative;
     }
 
-   		 .section-title::after {
-    	content: '';
-    	display: block;
-    	width: 60px;
-    	height: 3px;
-    	background: var(--secondary); /* Forces the magenta-cyan line to appear */
-    	margin: 15px auto 0;
-    	transition: width 0.5s ease-in-out;
-	}
+    .section-title::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--secondary);
+        margin: 10px auto 0;
+        transition: width 1s;
+    }
 
-/* Expands beautifully when hovered over */
-		.section-title:hover::after {
-    	width: 250px;
-	}
-
+    .section-title:hover::after {
+        width: 500px;
+    }
            
     .services-grid {
         display: grid;
@@ -212,7 +211,9 @@
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         text-align: center;
-        border-top: 4px solid var(--primary);
+        /* FIXED: Applies a crisp gradient frame directly around your pricing boxes */
+        border: 3px solid transparent;
+        border-image: var(--secondary) 1;
     }
 
     .service-item h3 {
@@ -326,7 +327,7 @@
         text-align: center;
         padding: 20px;
         font-size: 14px;
-        /* Ultra-compatible background strip trick for gradient top borders */
+        /* FIXED: Native-compatible background-image clipping method for footer borders */
         background-image: var(--secondary);
         background-size: 100% 2px;
         background-position: top;
@@ -345,7 +346,6 @@
         nav ul li {
             margin: 5px 10px;
         }
-        /* Mobile adjustment to ensure headers look correct on narrow layouts */
         nav ul li:not(:last-child)::after {
             margin: 0 8px;
         }
