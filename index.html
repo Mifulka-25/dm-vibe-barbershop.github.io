@@ -9,7 +9,8 @@
 <style>
     :root {
         --primary: #000000;
-        --secondary: linear-gradient(to right, #BC02D9, #00E4FF);
+        /* FIXED: Native repeating gradient formula scaled structurally to loop exactly 7 times horizontally */
+        --secondary: repeating-linear-gradient(to right, #BC02D9 0%, #00E4FF calc(100% / 7));
         --text-light: #ffffff;
         --text-dark: #000000;
         --bg-light: #0e011a;
@@ -36,9 +37,8 @@
         width: 100%;
         top: 0;
         z-index: 1000;
-        /* Custom background strip trick for gradient header border */
         background-image: var(--secondary);
-        background-size: 100% 2px;
+        background-size: 100% 3px; /* Slightly thicker for a brighter display look */
         background-position: bottom;
         background-repeat: no-repeat;
     }
@@ -78,7 +78,7 @@
         align-items: center;
     }
 
-    /* Vertical gradient dividers between navigation items */
+    /* Vertical 7-time loop dividers inside the header navigation */
     nav ul li:not(:last-child)::after {
         content: "";
         display: inline-block;
@@ -86,7 +86,7 @@
         height: 14px;
         margin: 0 15px;
         background: var(--secondary);
-        opacity: 0.7;
+        opacity: 0.9; /* Made brighter */
     }
 
     nav ul li a {
@@ -103,7 +103,6 @@
     }
 
     .hero {
-        /* Preserves background image layers while mapping edge-to-edge gradient separator line on bottom */
         background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                     url('https://pixabay.com') no-repeat center center/cover;
         height: 100vh;
@@ -116,7 +115,7 @@
         background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                           url('https://pixabay.com'), 
                           var(--secondary);
-        background-size: cover, cover, 100% 2px;
+        background-size: cover, cover, 100% 3px;
         background-position: center, center, bottom;
         background-repeat: no-repeat, no-repeat, no-repeat;
     }
@@ -150,9 +149,7 @@
         font-weight: bold;
         border-radius: 4px;
         transition: background 0.3s, transform 0.3s, border-color 0.3s;
-        border: 2px solid #BC02D9;
-        
-        /* Gradient text inside booking action button */
+        border: 2px solid #00E4FF; /* Brighter neon initial line boundary */
         background: var(--secondary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -173,16 +170,15 @@
         margin: 0 auto;
     }
 
-    /* Target the services container specifically for full-width layout dividers */
+    /* Edge-to-edge structural sections with the newly condensed 7-times repeating pattern */
     #services, section:first-of-type {
         max-width: 100%;
         background-image: var(--secondary);
-        background-size: 100% 2px;
+        background-size: 100% 3px;
         background-position: bottom;
         background-repeat: no-repeat;
     }
     
-    /* Re-wraps internal section items to 1200px max grid boundary */
     #services .services-grid, #services .section-title {
         max-width: 1200px;
         margin-left: auto;
@@ -232,10 +228,10 @@
         background: white;
         padding: 30px;
         border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        box-shadow: 0 4px 15px rgba(0, 228, 255, 0.2); /* Enhanced bright cyan shadow glow */
         text-align: center;
-        /* Applied crisp gradient framing on pricing modules */
-        border: 3px solid transparent;
+        /* FIXED & BRIGHTENED: Thickened border frame displaying the short 7x repeat sequence */
+        border: 4px solid transparent;
         border-image: var(--secondary) 1;
     }
 
@@ -256,9 +252,8 @@
         background-color: var(--bg-dark);
         color: var(--text-light);
         max-width: 100%;
-        /* Full-width neon divider strip stretching along bottom boundary */
         background-image: var(--secondary);
-        background-size: 100% 2px;
+        background-size: 100% 3px;
         background-position: bottom;
         background-repeat: no-repeat;
     }
@@ -355,9 +350,8 @@
         text-align: center;
         padding: 20px;
         font-size: 14px;
-        /* Native-compatible background-image method for footer line */
         background-image: var(--secondary);
-        background-size: 100% 2px;
+        background-size: 100% 3px;
         background-position: top;
         background-repeat: no-repeat;
     }
@@ -391,7 +385,6 @@
         }
     }
 </style>
-
 
 </head>
 <body>
