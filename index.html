@@ -184,19 +184,21 @@
         position: relative;
     }
 
-    .section-title::after {
-        content: '';
-        display: block;
-        width: 60px;
-        height: 3px;
-        background: var(--secondary);
-        margin: 10px auto 0;
-        transition: width 1s;
-    }
+   		 .section-title::after {
+    	content: '';
+    	display: block;
+    	width: 60px;
+    	height: 3px;
+    	background: var(--secondary); /* Forces the magenta-cyan line to appear */
+    	margin: 15px auto 0;
+    	transition: width 0.5s ease-in-out;
+	}
 
-    .section-title:hover::after {
-        width: 500px;
-    }
+/* Expands beautifully when hovered over */
+		.section-title:hover::after {
+    	width: 250px;
+	}
+
            
     .services-grid {
         display: grid;
