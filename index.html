@@ -36,7 +36,7 @@
         width: 100%;
         top: 0;
         z-index: 1000;
-        /* FIXED: Native-compatible background-image clipping method for bottom borders */
+        /* Custom background strip trick for gradient header border */
         background-image: var(--secondary);
         background-size: 100% 2px;
         background-position: bottom;
@@ -61,7 +61,6 @@
     }
 
     .logo span {
-        /* FIXED: Correct parameters for displaying gradients inside standalone text structures */
         background: var(--secondary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -79,7 +78,7 @@
         align-items: center;
     }
 
-    /* FIXED: Custom navigation section dividers with clean layout endings */
+    /* Vertical gradient dividers between navigation items */
     nav ul li:not(:last-child)::after {
         content: "";
         display: inline-block;
@@ -104,7 +103,9 @@
     }
 
     .hero {
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com') no-repeat center center/cover;
+        /* Preserves background image layers while mapping edge-to-edge gradient separator line on bottom */
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                    url('https://pixabay.com') no-repeat center center/cover;
         height: 100vh;
         display: flex;
         justify-content: center;
@@ -112,6 +113,12 @@
         text-align: center;
         color: var(--text-light);
         padding: 20px;
+        background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                          url('https://pixabay.com'), 
+                          var(--secondary);
+        background-size: cover, cover, 100% 2px;
+        background-position: center, center, bottom;
+        background-repeat: no-repeat, no-repeat, no-repeat;
     }
 
     .hero-content h1 {
@@ -145,7 +152,7 @@
         transition: background 0.3s, transform 0.3s, border-color 0.3s;
         border: 2px solid #BC02D9;
         
-        /* FIXED: Renders the gradient on the text inside the booking link button */
+        /* Gradient text inside booking action button */
         background: var(--secondary);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -164,6 +171,22 @@
         padding: 80px 20px;
         max-width: 1200px;
         margin: 0 auto;
+    }
+
+    /* Target the services container specifically for full-width layout dividers */
+    #services, section:first-of-type {
+        max-width: 100%;
+        background-image: var(--secondary);
+        background-size: 100% 2px;
+        background-position: bottom;
+        background-repeat: no-repeat;
+    }
+    
+    /* Re-wraps internal section items to 1200px max grid boundary */
+    #services .services-grid, #services .section-title {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .section-title {
@@ -211,7 +234,7 @@
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         text-align: center;
-        /* FIXED: Applies a crisp gradient frame directly around your pricing boxes */
+        /* Applied crisp gradient framing on pricing modules */
         border: 3px solid transparent;
         border-image: var(--secondary) 1;
     }
@@ -233,6 +256,11 @@
         background-color: var(--bg-dark);
         color: var(--text-light);
         max-width: 100%;
+        /* Full-width neon divider strip stretching along bottom boundary */
+        background-image: var(--secondary);
+        background-size: 100% 2px;
+        background-position: bottom;
+        background-repeat: no-repeat;
     }
 
     .about-container {
@@ -327,7 +355,7 @@
         text-align: center;
         padding: 20px;
         font-size: 14px;
-        /* FIXED: Native-compatible background-image clipping method for footer borders */
+        /* Native-compatible background-image method for footer line */
         background-image: var(--secondary);
         background-size: 100% 2px;
         background-position: top;
@@ -362,24 +390,8 @@
             font-size: 32px;
         }
     }
-
-	/* Adds a gradient divider line between the Services section and the O Mnie section */
-	#services, section:first-of-type {
-    	background-image: var(--secondary);
-    	background-size: 100% 2px;
-    	background-position: bottom;
-    	background-repeat: no-repeat;
-	}
-
-/* Adds a gradient divider line between the O Mnie section and the Kontakt section */
-	.about {
-    	background-image: var(--secondary);
-    	background-size: 100% 2px;
-    	background-position: bottom;
-    	background-repeat: no-repeat;
-	}
-
 </style>
+
 
 </head>
 <body>
